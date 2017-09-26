@@ -13,7 +13,7 @@
 </div>
 
 
-  <p>Here are your questions</p>
+  <p>If questions are added they appear below:</p>
   <% @questions.each() do |single| %>
   <% if single.survey_id == @survey_id %>
     <li><%=single.description%></li>

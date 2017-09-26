@@ -28,14 +28,12 @@ get('/surveys/:id') do
 end
 
 post('/surveys/:id') do
+  @questions = Question.all()
   id = params[:id].to_i
   @survey = Survey.find(id)
   @survey_id = @survey.id
-  @questions = Question.all()
-  # @questions = Question.find(stuff)
-  survey_id = @survey.id
   description = params.fetch("description")
-  Question.create({:description => description, :survey_id => survey_id})
+  Question.create({:description => description, :survey_id => @survey_id})
   # binding.pry
   erb(:survey)
 end
