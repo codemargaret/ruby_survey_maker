@@ -1,0 +1,26 @@
+<%= @survey.title %>
+
+<p>Add a question to your survey</p>
+
+<div class="">
+  <form action="/surveys/<%= @survey.id %>" method="post">
+    <div class="form-group">
+      <label for="description" class="form-label">Description of Question</label>
+      <input type="text" name="description" class="form-control"  placeholder="description">
+      <button type="submit" class="btn btn-primary">Create Question</button>
+    </div>
+  </form>
+</div>
+
+<% if @questions.any?()%>
+  <p>Here are your questions</p>
+  <% @questions.each() do |single| %>
+    <li><%=single.description%></li>
+  <% end %>
+<% else %>
+    <p>There are no questions, make one</p>
+<% end %>
+
+<div class="container">
+  <a href="/">Home</a>
+</div>
