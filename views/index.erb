@@ -1,0 +1,31 @@
+<h1>Survey Maker</h1>
+
+<div class="">
+  <form action="/" method="post">
+    <div class="form-group">
+      <label for="title" class="form-label">Title of Survey</label>
+      <input type="text" name="title" class="form-control"  placeholder="title">
+      <button type="submit" class="btn btn-primary">Create Survey</button>
+    </div>
+  </form>
+</div>
+
+<% if @surveys.any?()%>
+  <p>Here are your surveys</p>
+  <% @surveys.each() do |single| %>
+    <a href="/surveys/<%= single.id %>"><li><%=single.title%></li></a>
+  <% end %>
+<% else %>
+    <p>There are no surveys, make one</p>
+<% end %>
+
+
+
+
+
+
+
+
+<div class="container">
+  <a href="/">Home</a>
+</div>
