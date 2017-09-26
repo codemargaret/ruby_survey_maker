@@ -43,3 +43,18 @@ post('/survey/:id/delete') do
   @survey.delete
   redirect("/")
 end
+
+post('/surveys/:id/remove') do
+  @questions = Question.all()
+  id = params[:id].to_i
+  @survey = Survey.find(id)
+  @survey_id = @survey.id
+  # description = params.fetch("description")
+  @id_of_question = params.fetch("the_question_id").to_i
+  @question = Question.find(@id_of_question)
+  @question.delete
+  # binding.pry
+  # Question.create({:description => description, :survey_id => @survey_id})
+  erb(:survey)
+  # redirect("/surveys/:id")
+end

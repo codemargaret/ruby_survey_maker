@@ -12,10 +12,12 @@
   </form>
 </div>
 
+
+
   <p>If questions are added they appear below:</p>
   <% @questions.each() do |single| %>
   <% if single.survey_id == @survey_id %>
-    <li><%=single.description%></li>
+    <li><%=single.description%><form action="/surveys/<%= @survey.id %>/remove" method="post"><button type="submit" class="btn btn-primary" value="<%= single.id %>" name="the_question_id">Delete Question</button></form></li>
   <% end %>
 <% end %>
 
