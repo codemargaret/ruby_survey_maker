@@ -22,15 +22,20 @@ get('/surveys/:id') do
   @questions = Question.all()
   id = params[:id].to_i
   @survey = Survey.find(id)
+  @survey_id = @survey.id
+  # binding.pry
   erb(:survey)
 end
 
 post('/surveys/:id') do
-  @id = params[:id].to_i
+  id = params[:id].to_i
+  @survey = Survey.find(id)
+  @survey_id = @survey.id
   @questions = Question.all()
-  @survey = Survey.find(@id)
+  # @questions = Question.find(stuff)
   survey_id = @survey.id
   description = params.fetch("description")
   Question.create({:description => description, :survey_id => survey_id})
+  # binding.pry
   erb(:survey)
 end

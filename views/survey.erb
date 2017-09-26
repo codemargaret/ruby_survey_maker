@@ -12,13 +12,12 @@
   </form>
 </div>
 
-<% if @questions.any?()%>
+
   <p>Here are your questions</p>
   <% @questions.each() do |single| %>
+  <% if single.survey_id == @survey_id %>
     <li><%=single.description%></li>
   <% end %>
-<% else %>
-    <p>There are no questions, make one</p>
 <% end %>
 
 <div class="container">
