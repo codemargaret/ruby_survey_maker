@@ -37,3 +37,9 @@ post('/surveys/:id') do
   # binding.pry
   erb(:survey)
 end
+
+post('/survey/:id/delete') do
+  @survey = Survey.find(params[:id])
+  @survey.delete
+  redirect("/")
+end

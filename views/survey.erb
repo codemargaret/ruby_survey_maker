@@ -12,13 +12,19 @@
   </form>
 </div>
 
-
   <p>If questions are added they appear below:</p>
   <% @questions.each() do |single| %>
   <% if single.survey_id == @survey_id %>
     <li><%=single.description%></li>
   <% end %>
 <% end %>
+
+<form action="/survey/<%= @survey.id %>/delete" method="post">
+  <div class="form-group">
+    <!-- <input name="_method" type="hidden" value="delete"> -->
+    <button type="submit" class="btn btn-primary">Delete Survey</button>
+  </div>
+</form>
 
 <div class="container">
   <a href="/">Home</a>
